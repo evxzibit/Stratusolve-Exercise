@@ -7,9 +7,9 @@
  * @package    ${NAMESPACE}
  * @subpackage ${NAME}
  * @author     johangriesel <info@stratusolve.com>
- * Task_Data.txt is expected to be a json encoded string, e.g: [{"TaskId":1,"TaskName":"Test","TaskDescription":"Test"},{"TaskId":"2","TaskName":"Test2","TaskDescription":"Test2"}]
+ * Task_Data.txt is expected to be a json encoded string, e.g: [{"taskId":1,"taskName":"Test","taskDescription":"Test"},{"taskId":"2","taskName":"Test2","taskDescription":"Test2"}]
  */
-$taskData = file_get_contents('Task_Data.txt');
+$taskData = file_get_contents('task_data.txt');
 $html = '<a id="newTask" href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
                     <h4 class="list-group-item-heading">No Tasks Available</h4>
                     <p class="list-group-item-text">Click here to create one</p>
@@ -21,9 +21,9 @@ $taskArray = json_decode($taskData);
 if (sizeof($taskArray) > 0) {
     $html = '';
     foreach ($taskArray as $task) {
-        $html .= '<a id="'.$task->TaskId.'" href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
-                    <h4 class="list-group-item-heading">'.$task->TaskName.'</h4>
-                    <p class="list-group-item-text">'.$task->TaskDescription.'</p>
+        $html .= '<a id="'.$task->taskId.'" href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
+                    <h4 class="list-group-item-heading">'.$task->taskName.'</h4>
+                    <p class="list-group-item-text">'.$task->taskDescription.'</p>
                 </a>';
     }
 }
